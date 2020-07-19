@@ -10,7 +10,13 @@ class VilleCard extends StatelessWidget {
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[
-            Image.asset('assets/images/Toulouse.jpg', fit: BoxFit.cover),
+            Ink.image(
+              image: AssetImage('assets/images/Toulouse.jpg'),
+              child: InkWell(
+                onTap: () {},
+              ),
+              fit: BoxFit.cover,
+            ),
             Padding(
               padding: EdgeInsets.all(10),
               child: Column(
@@ -21,7 +27,7 @@ class VilleCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Icon(
-                          Icons.thumb_up,
+                          Icons.favorite_border,
                           size: 40,
                           color: Colors.white,
                         ),

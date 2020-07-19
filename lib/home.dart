@@ -17,8 +17,6 @@ class Home extends StatelessWidget {
         child: Column(
           children: <Widget>[
             VilleCard(),
-            VilleCard(),
-            VilleCard(),
           ],
         ),
       ),
