@@ -14,7 +14,24 @@ class PlansVoyage extends StatelessWidget {
           actions: <Widget>[Icon(Icons.more_vert)],
         ),
         body: Container(
-          child: Text('Cc Bonjours '),
+          padding: EdgeInsets.all(7),
+          child: Column(
+            children: <Widget>[
+              Card(
+                elevation: 10,
+                child: Container(
+                  height: 170,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: <Widget>[
+                      Image.asset('assets/images/Toulouse.jpg',
+                          fit: BoxFit.cover)
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
