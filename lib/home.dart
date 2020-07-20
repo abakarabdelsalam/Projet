@@ -14,12 +14,12 @@ class _HomeState extends State<Home> {
       'image': 'assets/images/Toulouse.jpg',
     },
     {
-      'name': 'paris',
+      'name': 'Pris',
       'image': 'assets/images/paris.jpg',
     },
     {
-      'Nantes': 'paris',
-      'image': 'assets/images/nantes.jpg',
+      'name': 'Ndjamena',
+      'image': 'assets/images/Ndjamena.jpg',
     },
   ];
 
