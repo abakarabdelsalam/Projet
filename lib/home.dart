@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'ville_card.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +21,7 @@ class Home extends StatelessWidget {
         padding: EdgeInsets.all(7),
         child: Column(
           children: <Widget>[
-            VilleCard(image: 'assets/images/Toulouse.jpg', name: 'toulouse'),
+            VilleCard(image: 'assets/images/Toulouse.jpg', name: 'Toulouse'),
           ],
         ),
       ),
