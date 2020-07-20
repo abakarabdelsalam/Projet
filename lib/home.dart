@@ -16,7 +16,7 @@ class Home extends StatelessWidget {
         padding: EdgeInsets.all(7),
         child: Column(
           children: <Widget>[
-            VilleCard(),
+            VilleCard(image: 'assets/images/Toulouse.jpg', name: 'toulouse'),
           ],
         ),
       ),
