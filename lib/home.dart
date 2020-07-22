@@ -12,16 +12,18 @@ class _HomeState extends State<Home> {
     {
       'name': 'Toulouse',
       'image': 'assets/images/Toulouse.jpg',
+      'checked': false
     },
-    {
-      'name': 'Pris',
-      'image': 'assets/images/paris.jpg',
-    },
-    {
-      'name': 'Ndjamena',
-      'image': 'assets/images/Ndjamena.jpg',
-    },
+    {'name': 'Paris', 'image': 'assets/images/paris.jpg', 'checked': false},
+    {'name': 'Nantes', 'image': 'assets/images/nantes.jpg', 'checked': false},
   ];
+
+  void switchChecked(ville) {
+    var index = villes.indexOf(ville);
+    setState(() {
+      villes[index]['checked'] = !villes[index]['checked'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +41,12 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: villes
-              .map((ville) =>
-                  VilleCard(name: ville['name'], image: ville['image']))
+              .map((ville) => VilleCard(
+                    name: ville['name'],
+                    image: ville['image'],
+                    checked: ville['checked'],
+                    updateChecked: () => switchChecked(ville),
+                  ))
               .toList(),
         ),
       ),
