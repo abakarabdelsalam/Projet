@@ -1,6 +1,5 @@
+import 'package:PlningVyage/views/widgets/ville_card.dart';
 import 'package:flutter/material.dart';
-
-import 'ville_card.dart';
 
 class Home extends StatefulWidget {
   @override
