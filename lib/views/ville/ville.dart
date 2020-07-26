@@ -3,7 +3,8 @@ import 'package:PlningVyage/models/trip.model.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/data.dart' as data;
-import 'widgets/activity_card.dart';
+import 'widgets/activity_List.dart';
+
 import 'widgets/trip_overview.dart';
 
 class Ville extends StatefulWidget {
@@ -48,18 +49,23 @@ class _VilleState extends State<Ville> {
               setDate: setDate,
             ),
             Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 1,
-                crossAxisSpacing: 1,
-                children: widget.activities
-                    .map((activity) => ActivityCard(activity: activity))
-                    .toList(),
+              child: ActivityList(
+                activities: widget.activities,
               ),
             )
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.add_comment),
+          title: Text('Découverte'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.add_a_photo),
+          title: Text('Mes activités'),
+        )
+      ]),
     );
   }
 }
