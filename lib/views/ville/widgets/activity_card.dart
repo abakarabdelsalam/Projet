@@ -14,7 +14,7 @@ class ActivityCard extends StatelessWidget {
         activity.image,
         fit: BoxFit.cover,
       ),
-      margin: EdgeInsets.all(5),
+      margin: EdgeInsets.all(1),
     );
   }
 }
