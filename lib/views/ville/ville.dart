@@ -1,10 +1,10 @@
 import 'package:PlningVyage/models/activity.model.dart';
 import 'package:PlningVyage/models/trip.model.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import '../../data/data.dart' as data;
 import 'widgets/activity_card.dart';
+import 'widgets/trip_overview.dart';
 
 class Ville extends StatefulWidget {
   final List<Activity> activities = data.activities;
@@ -13,13 +13,29 @@ class Ville extends StatefulWidget {
 }
 
 class _VilleState extends State<Ville> {
-  Trip mytrip = Trip(activities: [], ville: 'paris', date: DateTime.now());
+  Trip mytrip = Trip(activities: [], ville: 'Paris', date: DateTime.now());
+
+  void setDate() {
+    showDatePicker(
+      context: context,
+      firstDate: DateTime.now(),
+      initialDate: DateTime.now().add(Duration(days: 1)),
+      lastDate: DateTime(2022),
+    ).then((newDate) {
+      if (newDate != null) {
+        setState(() {
+          mytrip.date = newDate;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.chevron_left),
-        title: Text('Paris'),
+        title: Text('Organisation du voyage'),
         actions: <Widget>[
           Icon(Icons.more_vert),
         ],
@@ -27,25 +43,9 @@ class _VilleState extends State<Ville> {
       body: Container(
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.all(1),
-              height: 100,
-              color: Colors.white,
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Text(DateFormat('d/M/y').format(mytrip.date)),
-                      ),
-                      RaisedButton(
-                        child: Text('Sélectionnez une date'),
-                        onPressed: () => {},
-                      )
-                    ],
-                  )
-                ],
-              ),
+            TripOverview(
+              mytrip: mytrip,
+              setDate: setDate,
             ),
             Expanded(
               child: GridView.count(
@@ -62,6 +62,4 @@ class _VilleState extends State<Ville> {
       ),
     );
   }
-
-  DateFormat buildDateFormat() => DateFormat('d/M/y');
 }
