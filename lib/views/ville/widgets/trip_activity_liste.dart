@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class TripActivityList extends StatelessWidget {
   final List<Activity> activities;
+  final Function deleteTripActivity;
 
-  TripActivityList({this.activities});
+  TripActivityList({this.activities, this.deleteTripActivity});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,13 @@ class TripActivityList extends StatelessWidget {
                 backgroundImage: AssetImage(activity.image),
               ),
               title: Text(activity.name),
-              trailing: Icon(Icons.cancel),
+              trailing: IconButton(
+                icon: Icon(
+                  Icons.cancel,
+                  color: Colors.red,
+                ),
+                onPressed: () => deleteTripActivity(activity.id),
+              ),
             ),
           );
         },
