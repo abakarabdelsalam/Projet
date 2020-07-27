@@ -15,8 +15,15 @@ class Ville extends StatefulWidget {
 }
 
 class _VilleState extends State<Ville> {
-  Trip mytrip = Trip(activities: [], ville: 'Paris', date: DateTime.now());
-  int index = 0;
+  Trip mytrip;
+  int index;
+
+  @override
+  void initState() {
+    super.initState();
+    index = 0;
+    mytrip = Trip(activities: [], ville: 'Paris', date: null);
+  }
 
   void setDate() {
     showDatePicker(
@@ -44,7 +51,7 @@ class _VilleState extends State<Ville> {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.chevron_left),
-        title: Text('Organisation du voyage'),
+        title: Text('Organisation de mes voyages'),
         actions: <Widget>[
           Icon(Icons.more_vert),
         ],
