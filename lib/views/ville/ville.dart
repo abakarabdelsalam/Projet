@@ -21,8 +21,8 @@ class _VilleState extends State<Ville> {
   @override
   void initState() {
     super.initState();
-    index = 0;
     mytrip = Trip(activities: [], ville: 'Paris', date: null);
+    index = 0;
   }
 
   void setDate() {
@@ -46,6 +46,14 @@ class _VilleState extends State<Ville> {
     });
   }
 
+  void toggleActivity(String id) {
+    setState(() {
+      mytrip.activities.contains(id)
+          ? mytrip.activities.remove(id)
+          : mytrip.activities.add(id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,11 +72,14 @@ class _VilleState extends State<Ville> {
               setDate: setDate,
             ),
             Expanded(
-                child: index == 0
-                    ? ActivityList(
-                        activities: widget.activities,
-                      )
-                    : TripActivityList())
+              child: index == 0
+                  ? ActivityList(
+                      activities: widget.activities,
+                      selectedActivities: mytrip.activities,
+                      toggleActivity: toggleActivity,
+                    )
+                  : TripActivityList(),
+            )
           ],
         ),
       ),
