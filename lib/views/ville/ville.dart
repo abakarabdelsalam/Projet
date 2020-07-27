@@ -25,6 +25,12 @@ class _VilleState extends State<Ville> {
     index = 0;
   }
 
+  List<Activity> get tripActivities {
+    return widget.activities
+        .where((activity) => mytrip.activities.contains(activity.id))
+        .toList();
+  }
+
   void setDate() {
     showDatePicker(
       context: context,
@@ -78,7 +84,9 @@ class _VilleState extends State<Ville> {
                       selectedActivities: mytrip.activities,
                       toggleActivity: toggleActivity,
                     )
-                  : TripActivityList(),
+                  : TripActivityList(
+                      activities: tripActivities,
+                    ),
             )
           ],
         ),
