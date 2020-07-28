@@ -10,6 +10,22 @@ import 'widgets/trip_overview.dart';
 
 class Ville extends StatefulWidget {
   final List<Activity> activities = data.activities;
+
+  showContext({BuildContext context, List<Widget> children}) {
+    final orientation = MediaQuery.of(context).orientation;
+
+    if (orientation == Orientation.landscape) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: children,
+      );
+    } else {
+      return Column(
+        children: children,
+      );
+    }
+  }
+
   @override
   _VilleState createState() => _VilleState();
 }
@@ -17,6 +33,7 @@ class Ville extends StatefulWidget {
 class _VilleState extends State<Ville> {
   Trip mytrip;
   int index;
+  List<Activity> activities;
 
   @override
   void initState() {
@@ -77,8 +94,9 @@ class _VilleState extends State<Ville> {
         ],
       ),
       body: Container(
-        child: Column(
-          children: [
+        child: widget.showContext(
+          context: context,
+          children: <Widget>[
             TripOverview(
               mytrip: mytrip,
               setDate: setDate,

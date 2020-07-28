@@ -14,12 +14,17 @@ class TripOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final orientation = MediaQuery.of(context).orientation;
+    final size = MediaQuery.of(context).size;
+
     return Container(
       padding: EdgeInsets.all(10),
       height: 200,
+      width:
+          orientation == Orientation.landscape ? size.width * 0.5 : size.width,
       color: Colors.white,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           Text(
             'Paris',
@@ -37,8 +42,8 @@ class TripOverview extends StatelessWidget {
                 child: Text(
                   mytrip.date != null
                       ? DateFormat('d/M/y').format(mytrip.date)
-                      : 'choisissez une date',
-                  style: TextStyle(fontSize: 20),
+                      : 'Sélectionnez une date',
+                  style: TextStyle(fontSize: 15),
                 ),
               ),
               RaisedButton(
