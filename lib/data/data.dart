@@ -1,4 +1,4 @@
-import 'package:PlningVyage/models/activity.model.dart';
+import 'package:PlningVyage/models/activity_model.dart';
 
 List<Activity> activities = [
   Activity(

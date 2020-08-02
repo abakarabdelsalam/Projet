@@ -1,4 +1,4 @@
-import 'package:PlningVyage/models/activity.model.dart';
+import 'package:PlningVyage/models/activity_model.dart';
 import 'package:flutter/material.dart';
 
 class TripActivityList extends StatelessWidget {

@@ -1,61 +1,49 @@
+import '../../models/ville_model.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:PlningVyage/views/ville/ville_view.dart';
 
 class VilleCard extends StatelessWidget {
-  final String name;
-  final String image;
-  final bool checked;
-  final Function updateChecked;
-  VilleCard({this.name, this.image, this.checked, this.updateChecked});
+  final Ville ville;
+  VilleCard({this.ville});
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 10,
-      child: Container(
-        height: 170,
-        child: Stack(
-          fit: StackFit.expand,
-          children: <Widget>[
-            Ink.image(
-              image: AssetImage(image),
-              child: InkWell(
-                onTap: updateChecked,
-              ),
-              fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: <Widget>[
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Icon(
-                          checked ? Icons.favorite : Icons.favorite_border,
-                          size: 40,
-                          color: Colors.white,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        name,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                        ),
+        elevation: 10,
+        child: Container(
+          height: 170,
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Ink.image(
+                image: AssetImage(ville.image),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return Villeview();
+                        },
                       ),
-                    ],
-                  ),
-                ],
+                    );
+                  },
+                ),
+                fit: BoxFit.cover,
               ),
-            )
-          ],
-        ),
-      ),
-    );
+              Positioned(
+                top: 10,
+                left: 10,
+                child: Text(
+                  ville.name,
+                  style: TextStyle(
+                      fontSize: 35,
+                      color: Colors.white,
+                      backgroundColor: Colors.black54),
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }

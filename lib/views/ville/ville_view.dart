@@ -1,5 +1,5 @@
-import 'package:PlningVyage/models/activity.model.dart';
-import 'package:PlningVyage/models/trip.model.dart';
+import 'package:PlningVyage/models/activity_model.dart';
+import 'package:PlningVyage/models/trip_model.dart';
 import 'package:PlningVyage/views/ville/widgets/trip_activity_liste.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +8,7 @@ import 'widgets/activity_List.dart';
 
 import 'widgets/trip_overview.dart';
 
-class Ville extends StatefulWidget {
+class Villeview extends StatefulWidget {
   final List<Activity> activities = data.activities;
 
   showContext({BuildContext context, List<Widget> children}) {
@@ -27,10 +27,10 @@ class Ville extends StatefulWidget {
   }
 
   @override
-  _VilleState createState() => _VilleState();
+  _VilleviewState createState() => _VilleviewState();
 }
 
-class _VilleState extends State<Ville> {
+class _VilleviewState extends State<Villeview> {
   Trip mytrip;
   int index;
   List<Activity> activities;
