@@ -5,12 +5,13 @@ import 'package:intl/intl.dart';
 class TripOverview extends StatelessWidget {
   final Function setDate;
   final Trip mytrip;
+  final String villeName;
 
   double get amount {
     return 0;
   }
 
-  TripOverview({this.setDate, this.mytrip});
+  TripOverview({this.setDate, this.mytrip, this.villeName});
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,10 @@ class TripOverview extends StatelessWidget {
           orientation == Orientation.landscape ? size.width * 0.5 : size.width,
       color: Colors.white,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            'Paris',
+            villeName,
             style: TextStyle(
               fontSize: 25,
               decoration: TextDecoration.underline,
@@ -54,23 +55,6 @@ class TripOverview extends StatelessWidget {
           ),
           SizedBox(
             height: 30,
-          ),
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Text(
-                  'Montant / personne',
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-              Text(
-                '$amount€',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              )
-            ],
           ),
         ],
       ),

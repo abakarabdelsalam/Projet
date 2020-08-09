@@ -1,7 +1,5 @@
 import '../../models/ville_model.dart';
 import 'package:flutter/material.dart';
-// ignore: unused_import
-import 'package:PlningVyage/views/ville/ville_view.dart';
 
 class VilleCard extends StatelessWidget {
   final Ville ville;
@@ -9,9 +7,9 @@ class VilleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        elevation: 10,
-        child: Container(
-          height: 170,
+      elevation: 5,
+      child: Container(
+          height: 150,
           child: Stack(
             fit: StackFit.expand,
             children: <Widget>[
@@ -19,13 +17,10 @@ class VilleCard extends StatelessWidget {
                 image: AssetImage(ville.image),
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(
+                    Navigator.pushNamed(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Villeview();
-                        },
-                      ),
+                      '/ville',
+                      arguments: ville,
                     );
                   },
                 ),
@@ -34,16 +29,23 @@ class VilleCard extends StatelessWidget {
               Positioned(
                 top: 10,
                 left: 10,
-                child: Text(
-                  ville.name,
-                  style: TextStyle(
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 5,
+                  ),
+                  color: Colors.black54,
+                  child: Text(
+                    ville.name,
+                    style: TextStyle(
                       fontSize: 35,
                       color: Colors.white,
-                      backgroundColor: Colors.black54),
+                    ),
+                  ),
                 ),
-              )
+              ),
             ],
-          ),
-        ));
+          )),
+    );
   }
 }

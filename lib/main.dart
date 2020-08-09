@@ -1,5 +1,7 @@
 import 'package:PlningVyage/views/home/home_view.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
+import 'package:PlningVyage/views/ville/ville_view.dart';
 
 void main() => runApp(PlansVoyage());
 
@@ -8,8 +10,11 @@ class PlansVoyage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomeView(),
-    );
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/': (context) => HomeView(),
+          '/ville': (context) => VilleView(),
+        });
   }
 }

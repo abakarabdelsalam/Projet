@@ -1,5 +1,6 @@
 import 'package:PlningVyage/models/activity_model.dart';
 import 'package:PlningVyage/models/trip_model.dart';
+import 'package:PlningVyage/models/ville_model.dart';
 import 'package:PlningVyage/views/ville/widgets/trip_activity_liste.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,7 @@ import 'widgets/activity_List.dart';
 
 import 'widgets/trip_overview.dart';
 
-class Villeview extends StatefulWidget {
+class VilleView extends StatefulWidget {
   final List<Activity> activities = data.activities;
 
   showContext({BuildContext context, List<Widget> children}) {
@@ -27,10 +28,10 @@ class Villeview extends StatefulWidget {
   }
 
   @override
-  _VilleviewState createState() => _VilleviewState();
+  _VilleViewState createState() => _VilleViewState();
 }
 
-class _VilleviewState extends State<Villeview> {
+class _VilleViewState extends State<VilleView> {
   Trip mytrip;
   int index;
   List<Activity> activities;
@@ -85,10 +86,11 @@ class _VilleviewState extends State<Villeview> {
 
   @override
   Widget build(BuildContext context) {
+    final Ville ville = ModalRoute.of(context).settings.arguments;
+
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.chevron_left),
-        title: Text('Organisation de mes voyages'),
+        title: Text('Organisation du voyage'),
         actions: <Widget>[
           Icon(Icons.more_vert),
         ],
@@ -100,6 +102,7 @@ class _VilleviewState extends State<Villeview> {
             TripOverview(
               mytrip: mytrip,
               setDate: setDate,
+              villeName: ville.name,
             ),
             Expanded(
               child: index == 0
@@ -117,13 +120,14 @@ class _VilleviewState extends State<Villeview> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: index,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_comment),
+            icon: Icon(Icons.map),
             title: Text('Découverte'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_a_photo),
+            icon: Icon(Icons.stars),
             title: Text('Mes activités'),
           )
         ],
